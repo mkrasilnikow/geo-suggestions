@@ -3,6 +3,7 @@ package ru.liptsoft.geosuggestions.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+import ru.liptsoft.geosuggestions.model.DaDataRestService;
 import ru.redcom.lib.integration.api.client.dadata.DaDataClient;
 import ru.redcom.lib.integration.api.client.dadata.DaDataClientFactory;
 import ru.redcom.lib.integration.api.client.dadata.dto.Address;
@@ -20,8 +21,7 @@ public class LocationServiceImpl implements LocationService<Address> {
 
     @Override
     public Address getAddress(String geoLocation) {
-        //TODO: Вынести инициализацию вне метода
-        DaDataClient daDataClient = DaDataClientFactory.getInstance(apiKey, secretKey);
-        return daDataClient.cleanAddress(geoLocation);
+        DaDataRestService daDataRestService = DaDataRestService.getInstance(apiKey,secretKey);
+        return daDataRestService.getDaDataClient().cleanAddress(geoLocation);
     }
 }
