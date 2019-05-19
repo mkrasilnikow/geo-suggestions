@@ -1,5 +1,6 @@
 package ru.liptsoft.geosuggestions.delegate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,11 @@ public class LocationServiceDelegate implements JavaDelegate {
 
         String address = (String) delegateExecution.getVariable("address");
 
-        String fullAddress = locationService.getAddress(address).toString();
+        Address fullAddress = locationService.getAddress(address);
 
-        delegateExecution.setVariable("fullAddress", fullAddress);
+        delegateExecution.setVariable("latitude", fullAddress.getGeoLat());
+        delegateExecution.setVariable("longitude", fullAddress.getGeoLon());
 
+        delegateExecution.setVariable("fullAddress", fullAddress.toString());
     }
 }
