@@ -17,7 +17,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("suggest")
 public class GeoSuggestionsController {
-
     @Autowired
     private LocationServiceImpl locationService;
 
@@ -25,5 +24,4 @@ public class GeoSuggestionsController {
     public Address getAddress(@RequestBody String location) {
         return locationService.getAddress(location);
     }
-
 }
