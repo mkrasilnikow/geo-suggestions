@@ -22,3 +22,6 @@
     ``` 
     На выходе получаем war **geo-suggestions-0.0.1-SNAPSHOT**, имеющий все нужные зависимости.
     Запускать с помощью веб-сервера TomCat или jetty.
+
+* Схема процесса:
+![Suggestions Process](https://github.com/wiezmin/geo-suggestions/blob/master/src/main/resources/suggestionsProcess.png "Suggestions Process")
